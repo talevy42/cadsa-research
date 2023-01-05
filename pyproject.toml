@@ -2,10 +2,8 @@
 name = "qgis_ca"
 version = "0.1.0"
 description = ""
-authors = ["Tal Levy <tal@secondspectrum.com>"]
-packages = [
-  {include = "src"},
-]
+authors = ["Tal Levy <tal42levy@gmail.com>"]
+packages = [ ]
 
 [tool.poetry.dependencies]
 python = "^3.9"
