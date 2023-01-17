@@ -6,8 +6,8 @@ def main(args):
     prec_id_col = args.precinct_column
 
     rf = open(args.results_file, "r")
-    next(rf)
-    next(rf)
+    for i in range(args.num_skip):
+        next(rf)
     results = csv.DictReader(rf)
 
     mappings = csv.DictReader(open(args.districts_map, newline=""))
@@ -61,6 +61,9 @@ if __name__ == "__main__":
     )
     parser.add_argument(
         "-t", "--total", type=str, default="BALLOTS CAST", help="Column name for total votes"
+    )
+    parser.add_argument(
+        "-n", "--num_skip", type=int, default=0, help="Number of header lines to skip"
     )
     parser.add_argument(
         "-rc",

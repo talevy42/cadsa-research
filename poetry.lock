@@ -789,6 +789,14 @@ openapi = ["openapi-core (>=0.16.1)", "ruamel-yaml"]
 test = ["codecov", "ipykernel", "jupyterlab-server", "openapi-spec-validator (>=0.5.1)", "pytest-console-scripts", "pytest-cov", "pytest-jupyter[server] (>=0.6.2)", "pytest-timeout", "pytest (>=7.0)", "requests-mock", "sphinxcontrib-spelling", "strict-rfc3339", "werkzeug"]
 
 [[package]]
+name = "jupyterlab-vim"
+version = "0.15.1"
+description = "Code cell vim bindings"
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[[package]]
 name = "jupyterlab-widgets"
 version = "3.0.5"
 description = "Jupyter interactive widgets for JupyterLab"
@@ -1587,7 +1595,7 @@ testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "flake8 (<5)", "pytest-co
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "59bbdc81cf9fbefee8eeb07cf9d9641af575d0f6e9d3455321a4e0c5129a517c"
+content-hash = "c5638eb252cc83c99a2f079055420c2aaa787c4a79eb8115989a248188f00efb"
 
 [metadata.files]
 anyio = []
@@ -1707,6 +1715,7 @@ jupyterlab-pygments = [
     {file = "jupyterlab_pygments-0.2.2.tar.gz", hash = "sha256:7405d7fde60819d905a9fa8ce89e4cd830e318cdad22a0030f7a901da705585d"},
 ]
 jupyterlab-server = []
+jupyterlab-vim = []
 jupyterlab-widgets = []
 markupsafe = [
     {file = "MarkupSafe-2.1.1-cp310-cp310-macosx_10_9_universal2.whl", hash = "sha256:86b1f75c4e7c2ac2ccdaec2b9022845dbb81880ca318bb7a0a01fbf7813e3812"},
