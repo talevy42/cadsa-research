@@ -14,7 +14,7 @@ def main(args):
 
     precinct_map = {}
     for m in mappings:
-        code = m["Code"]
+        code = m["precinct"]
         if code in precinct_map:
             if m["percent"] > precinct_map[code]["percent"]:
                 precinct_map[code] = m
@@ -23,6 +23,8 @@ def main(args):
 
     reshaped = {}
     for precinct in results:
+        if prec_id_col not in precinct:
+            print(precinct)
         if precinct.get("TYPE", "TOTAL") != "TOTAL" or precinct[prec_id_col] not in precinct_map:
             pass
         else:
