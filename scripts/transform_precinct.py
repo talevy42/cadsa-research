@@ -7,7 +7,11 @@ EXPORT_COLS = ["District", "area_col", "percent", "precinct"]
 
 
 def convert(args):
-    precincts = gpd.read_file(args.precinct_file).to_crs("EPSG:4326")
+    precincts = gpd.read_file(args.precinct_file)
+    try:
+        precincts = precincts.to_crs("EPSG:4326")
+    except ValueError:
+        pass
     districts = gpd.read_file(args.district_file).to_crs("EPSG:4326")
     code_col = args.code_col
     overlay = districts.overlay(precincts, how="intersection")
