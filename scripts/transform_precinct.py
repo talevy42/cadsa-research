@@ -14,14 +14,18 @@ def convert(args):
         pass
     districts = gpd.read_file(args.district_file).to_crs("EPSG:4326")
     code_col = args.code_col
+    district_col = args.district_col
+    export_cols = EXPORT_COLS
     overlay = districts.overlay(precincts, how="intersection")
     overlay["area_col"] = overlay.area
+
     try:
         overlay["percent"] = overlay.apply(
             lambda x: x.area_col / precincts[precincts[code_col] == x[code_col]].area.sum(), axis=1
         )
-        overlay.rename(columns={code_col: "precinct"}, inplace=True)
-        overlay[overlay.percent > 0.1][EXPORT_COLS].to_csv(args.output_file)
+        overlay.rename(columns={code_col: "precinct", district_col: "District"}, inplace=True)
+        print(f"Valid cols: {list(overlay.columns)}")
+        overlay[overlay.percent > 0.1][export_cols].to_csv(args.output_file)
     except (AttributeError, KeyError) as e:
         print(f"Valid cols: {list(precincts.columns)}")
         raise e
@@ -40,6 +44,9 @@ if __name__ == "__main__":
     )
     parser.add_argument(
         "-c", "--code-col", type=str, default="Code", help="Column name for precinct id"
+    )
+    parser.add_argument(
+        "-d", "--district-col", type=str, default="District", help="Column name for district num"
     )
     args = parser.parse_args()
     convert(args)
