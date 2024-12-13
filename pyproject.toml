@@ -1,9 +1,9 @@
 [tool.poetry]
-name = "qgis_ca"
+name = "cadsa-electoral"
 version = "0.1.0"
 description = ""
 authors = ["Tal Levy <tal42levy@gmail.com>"]
-packages = [ ]
+packages = [ {include = "electoral"} ]
 
 [tool.poetry.dependencies]
 python = "^3.9"
